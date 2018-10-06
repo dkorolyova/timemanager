@@ -1,15 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
-/* 
- * File:   main.cpp
- * Author: mi
- *
- * Created on September 30, 2018, 11:17 AM
- */
 
 #include <cstdlib>
 #include <iostream>
@@ -18,38 +7,38 @@
 #include <utility>
 #include "TimeCount.h" 
 #include <string>
-#include "TimeStruct.h" 
+#include "TimeStruct.h"
+#include "TimeLogger.h"
+#include "Sessions.h" 
+
 
 
 using namespace std;
 
-/*
- * 
- */
 
 
 int main(int argc, char** argv) {
     TimeCount timeCount;
+    Sessions sessions;
     vector<TimeStruct> timestamps;
+    TimeLogger timeLogger(&timestamps);
     string command;
-    int timeSum = 0;
     cout << "Time management program\n";
     while (true) {
-        TimeStruct timePair;
-
+        //sessions.writeToFile();
+        TimeStruct timeData;
         cin >> command;
         if (command == "start") {
-            timePair.startTime = time(NULL);
+            timeData.startTime = time(NULL);
         }
         if (command == "stop") {
-            timePair.endTime = time(NULL);
-
-            timestamps.push_back(timePair);
-
-            cout << timeCount.SumOfTime(timestamps) << endl;
-            cout << timeCount.HumanReadable() << endl;
-
+            timeData.stopTime = time(NULL);
+          
+            timestamps.push_back(timeData);
+            timeCount.SumOfTime(&timestamps);
+            timeLogger.writeToLog();
         }
+        
     }
     return 0;
 }
