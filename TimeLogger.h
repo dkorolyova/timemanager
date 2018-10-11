@@ -14,7 +14,7 @@ public:
     TimeLogger(const TimeLogger& orig);
     virtual ~TimeLogger();
     void writeToLog();
-    bool fexists(const char *filename);
+    bool fexists(const string filename);
 private:
     vector<TimeStruct> *timeData;
 };
