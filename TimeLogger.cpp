@@ -14,6 +14,10 @@ TimeLogger::TimeLogger() {
 TimeLogger::TimeLogger(vector<TimeStruct> *data):timeData(data) {
 }
 
+void TimeLogger::setTimeData(vector<TimeStruct> *data) {
+    timeData = data;
+}
+
 bool TimeLogger::fexists(const string filename) {
     ifstream ifile(filename);
     return ifile.good();

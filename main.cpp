@@ -12,40 +12,19 @@
 #include "Sessions.h" 
 #include <fstream>
 #include "ConfigConst.h"
+#include "Commands.h"
+#include "StateModel.h"
 
 
 using namespace std;
 
 int main(int argc, char** argv) {
-    TimeCount timeCount;
-    Sessions sessions;
+    Commands commands;
     vector<TimeStruct> timestamps;
     TimeLogger timeLogger(&timestamps);
-    string command;
     cout << "Time management program\n";
     while (true) {
-        if (sessions.isSessionInit()) {
-            if (cin >> command && command == INIT_COMMAND) {
-                sessions.initSession();
-            }
-            continue;
-        }
-        cout << "Enter the action: ";
-        TimeStruct timeData;
-        cin >> command;
-        if (command == START_COMMAND) {
-            timeData.startTime = time(NULL);
-        }
-        if (command == STOP_COMMAND) {
-            timeData.stopTime = time(NULL);
-
-            timestamps.push_back(timeData);
-            timeCount.SumOfTime(&timestamps);
-            timeLogger.writeToLog();
-        }
-        if (command == COMMIT_COMMAND) {
-            sessions.commitSession();
-        }
+        commands.checkCommand();
     }
     return 0;
 }

@@ -16,8 +16,10 @@ public:
     void initSession();
     void commitSession();
     void sessionRead();
+    bool isSessionCommit();
     bool isSessionInit();
     vector<string> getSessionVector();
+    
 private:
     vector<string> sessionVector;
 };

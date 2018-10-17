@@ -15,6 +15,7 @@ public:
     virtual ~TimeLogger();
     void writeToLog();
     bool fexists(const string filename);
+    void setTimeData(vector<TimeStruct> *data);
 private:
     vector<TimeStruct> *timeData;
 };
