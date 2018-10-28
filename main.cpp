@@ -20,11 +20,9 @@ using namespace std;
 
 int main(int argc, char** argv) {
     Commands commands;
-    vector<TimeStruct> timestamps;
-    TimeLogger timeLogger(&timestamps);
     cout << "Time management program\n";
     while (true) {
-        commands.checkCommand();
+        commands.handleCommand();
     }
     return 0;
 }

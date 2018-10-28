@@ -17,7 +17,7 @@ Commands::Commands() {
 Commands::Commands(const Commands& orig) {
 }
 
-void Commands::checkCommand() {
+void Commands::handleCommand() {
     string command;
     
     while (true) {

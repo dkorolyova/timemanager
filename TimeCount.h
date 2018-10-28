@@ -12,14 +12,14 @@
 using namespace std;
 
 class TimeCount {
-    int timeTotal;
 public:
     TimeCount();
     TimeCount(const TimeCount& orig);
     virtual ~TimeCount();
-    int SumOfTime(vector<TimeStruct> *timestamps);
+    int sumOfTime(vector<TimeStruct> *timestamps);
+    int sumSeconds;
+    string totalTime(vector<TimeStruct> *timestamps);
 private:
-
 };
 
 #endif /* TIMECOUNT_H */

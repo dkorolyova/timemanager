@@ -17,7 +17,7 @@ public:
     bool expectStart();
     bool expectStop();
     bool expectCommand(string command, string message);
-    void checkCommand();
+    void handleCommand();
     void fillMap();
     StateModel stateModel;
 private:

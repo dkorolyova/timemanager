@@ -28,13 +28,13 @@ void TimeLogger::writeToLog() {
     if (!fexists(OUTPUT_FILE)) {
         addHeadLine = true;
     }
-    string headLine = "Start date;Stop date;Hours;Minutes;Seconds;Total time today\n";
+    string headLine = "Start date;Stop date;Period;Total time today\n";
     fstream out(OUTPUT_FILE, std::fstream::in | std::fstream::out | std::fstream::app);
     if (addHeadLine) {
         out << headLine;
     }
     TimeCount timeSum;
-    out << (timeData->back()).humanReadable() << timeSum.SumOfTime(timeData) << "\n";
+    out << (timeData->back()).humanReadable() << ";" << timeSum.totalTime(timeData) << "\n";
     out.close();
 }
 
@@ -43,4 +43,3 @@ TimeLogger::TimeLogger(const TimeLogger& orig) {
 
 TimeLogger::~TimeLogger() {
 }
-

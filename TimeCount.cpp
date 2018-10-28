@@ -18,14 +18,18 @@ TimeCount::TimeCount() {
 TimeCount::TimeCount(const TimeCount& orig) {
 }
 
-int TimeCount::SumOfTime(vector<TimeStruct> *timestamps) {
-    int timeSum = 0;
+int TimeCount::sumOfTime(vector<TimeStruct> *timestamps) {
+    sumSeconds = 0;
     for (TimeStruct timeStamp : *timestamps) {
-        timeSum += timeStamp.getSeconds();
+        sumSeconds += timeStamp.getSeconds();
     }
-    timeTotal = timeSum;
-    return timeSum;
+    return sumSeconds;
 };
+
+string TimeCount::totalTime(vector<TimeStruct> *timestamps) {
+    int sumSeconds = sumOfTime(timestamps);
+    return to_string((sumSeconds / 60) / 60) + "h " + to_string((sumSeconds / 60) % 60) + "m " + to_string(sumSeconds % 60) + "s ";
+}
 
 TimeCount::~TimeCount() {
 }

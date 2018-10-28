@@ -40,7 +40,7 @@ void StateModel::setState(string stateValue) {
     if (state == STOP_COMMAND) {
         timeData->stopTime = time(NULL);
         timestamps.push_back(*timeData);
-        timeCount.SumOfTime(&timestamps);
+        timeCount.sumOfTime(&timestamps);
         timeLogger.writeToLog();
     }
 }
